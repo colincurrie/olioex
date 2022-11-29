@@ -4,6 +4,7 @@ class CreateValues < ActiveRecord::Migration[7.0]
       t.float :price
       t.string :currency
       t.string :payment_type
+      t.references :article
 
       t.timestamps
     end

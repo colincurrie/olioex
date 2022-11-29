@@ -4,6 +4,7 @@ class CreateAvatars < ActiveRecord::Migration[7.0]
       t.string :original_url
       t.string :large_url
       t.string :small_url
+      t.references :user
 
       t.timestamps
     end

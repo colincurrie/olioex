@@ -13,7 +13,6 @@ gem "actionview"
 #gem "activejob"
 gem "activesupport"
 gem "railties"
-gem "sprockets-rails"
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -64,6 +63,7 @@ gem "dotenv-rails"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "pry"
+  gem "pry-nav"
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'capybara'
