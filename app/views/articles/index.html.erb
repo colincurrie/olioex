@@ -1,1 +1,24 @@
-<h1>Articles</h1>
+<div class="title">
+  <h1>Articles</h1>
+</div>
+
+<div class="results">
+  <% @articles.each do |article| %>
+    <div class="article">
+      <div class="image">
+        <%= article.photos.first.original_url %>
+      </div>
+      <div class="title">
+        <h3><%= article.title %></h3>
+      </div>
+      <div class="info">
+        <div class="user"><%= article.user&.first_name %></div>
+        <div class="distance"><%= article.location&.distance %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="navigation">
+  <p><%= paginate @articles %></p>
+</div>

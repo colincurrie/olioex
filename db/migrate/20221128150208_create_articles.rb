@@ -12,7 +12,6 @@ class CreateArticles < ActiveRecord::Migration[7.0]
       t.timestamp :expiry
       t.references :reaction, foreign_key: true
       t.boolean :is_owner
-      t.references :photos, foreign_key: true
       t.references :user, foreign_key: true
       t.timestamp :last_listed
 

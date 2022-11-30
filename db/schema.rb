@@ -26,13 +26,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_161310) do
     t.datetime "expiry", precision: nil
     t.bigint "reaction_id"
     t.boolean "is_owner"
-    t.bigint "photos_id"
     t.bigint "user_id"
     t.datetime "last_listed", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_articles_on_location_id"
-    t.index ["photos_id"], name: "index_articles_on_photos_id"
     t.index ["reaction_id"], name: "index_articles_on_reaction_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
     t.index ["value_id"], name: "index_articles_on_value_id"
@@ -42,22 +40,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_161310) do
     t.string "original_url"
     t.string "large_url"
     t.string "small_url"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_avatars_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.float "distance"
     t.string "town"
     t.string "country"
-    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_locations_on_article_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -79,10 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_161310) do
     t.boolean "by_user"
     t.integer "views"
     t.integer "impressions"
-    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_reactions_on_article_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -112,15 +104,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_161310) do
     t.float "price"
     t.string "currency"
     t.string "payment_type"
-    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_values_on_article_id"
   end
 
   add_foreign_key "articles", "\"values\"", column: "value_id"
   add_foreign_key "articles", "locations"
-  add_foreign_key "articles", "photos", column: "photos_id"
   add_foreign_key "articles", "reactions"
   add_foreign_key "articles", "users"
 end

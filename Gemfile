@@ -60,13 +60,20 @@ gem "bootsnap", require: false
 # Load configuration items from the command line using ENV variables
 gem "dotenv-rails"
 
+# HTTParty for fetching the source data
+gem "httparty"
+
+# Use Kaminari for pagination
+gem "kaminari"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "pry"
   gem "pry-nav"
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'capybara'
+  gem "rspec-rails"
+  gem "rails-controller-testing"
+  gem "factory_bot_rails"
+  gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "simplecov", require: false

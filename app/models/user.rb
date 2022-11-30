@@ -1,27 +1,34 @@
 class User < ApplicationRecord
+  has_and_belongs_to_many :articles
   has_and_belongs_to_many :verifications
   has_and_belongs_to_many :roles
   belongs_to :avatar
 
   def with_data( options )
 
-    self.first_name = options['first_name']
+    @first_name = options['first_name']
 
     if options['rating']
-      self.rating = options['rating']['rating']
-      self.number = options['rating']['number']
+      @rating = options['rating']['rating']
+      @number = options['rating']['number']
     end
 
     if options['location']
-      self.latitude = options['location']['latitude']
-      self.longitude = options['location']['longitude']
+      @latitude = options['location']['latitude']
+      @longitude = options['location']['longitude']
     end
 
-    self.avatar = Avatar.new().with_data( options['current_avatar'] )
+    avatar.with_data( options['current_avatar'] ) if options['current_avatar']
 
-    self.roles = options['roles'].map { |name| Role.find_or_create_by( name: name ) }
+    # TODO: suttin aint right, this should be an association, not an array
+    @roles = options['roles'].map { |name| Role.find_or_create_by( name: name ) } if options['roles']
 
     self
 
   end
+
+  def avatar
+    @avatar ||= Avatar.create()
+  end
+
 end
