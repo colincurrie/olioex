@@ -6,14 +6,14 @@
   <% @articles.each do |article| %>
     <div class="article">
       <div class="image">
-        <%= article.photos.first.original_url %>
+        <%= image_tag article.photos.first&.original_url, width: 42, height: 42 %>
       </div>
       <div class="title">
         <h3><%= article.title %></h3>
       </div>
       <div class="info">
-        <div class="user"><%= article.user&.first_name %></div>
-        <div class="distance"><%= article.location&.distance %></div>
+        <div class="user"><%= image_tag article.user&.avatar&.small_url, width: 42, height: 42 %> <%= article.user&.first_name %></div>
+        <div class="distance"><%= article.location&.distance %>mi away </div>
       </div>
     </div>
   <% end %>

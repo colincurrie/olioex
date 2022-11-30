@@ -6,7 +6,8 @@ class ArticlesController < ApplicationController
 
     articles = data.map do |article|
       record = Article.find_or_create_by(id: article['id'])
-      record.with_data(article)
+      record.with_data(article).save
+      record
     end
 
     @articles = Article.order(created_at: :desc).page( params[:page] )
