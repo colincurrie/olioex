@@ -1,0 +1,7 @@
+<div class="article">
+  <div class="image"><%= image_tag article.photos.first&.original_url, class: 'image' %></div>
+  <div class="title"><%= article.title %></div>
+  <div class="avatar"><%= image_tag article.user&.avatar&.small_url, class: 'avatar' %></div>
+  <span class="name"><%= article.user&.first_name %></span>
+  <div class="distance"><%= article.location&.distance %>mi away</div>
+</div>
