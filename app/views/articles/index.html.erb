@@ -1,13 +1,9 @@
-<div class="title">
-  Articles
-</div>
-
 <div class="results">
   <% @articles.each do |article| %>
     <%= render 'list_article', article: article %>
   <% end %>
 </div>
 
-<div class="navigation">
+<div class="pagination">
   <p><%= paginate @articles %></p>
 </div>

@@ -14,12 +14,13 @@ body {
       max-height: 100%;
     }
 
-    max-width: 640px;
+    max-width: 1000px;
+    margin: auto;
     align-content: center;
 
     .article {
       display: grid;
-      grid-template-columns: 100px 42px max-content max-content auto;
+      grid-template-columns: 100px 42px 70px 120px max-content auto;
       grid-template-rows: max-content max-content auto;
       grid-gap: 5px;
 
@@ -29,13 +30,13 @@ body {
       box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
 
       vertical-align: middle;
+      overflow: hidden;
 
       &:hover {
         background-color: #f8f8f8;
-        cursor: pointer;
       }
 
-      .image {
+      .article__image {
         grid-column: 1;
         grid-row: 1 / span 3;
 
@@ -46,14 +47,14 @@ body {
         vertical-align: middle;
       }
 
-      .title {
+      .article__title {
         grid-column: 2 / span 4;
         grid-row: 1;
 
         font-size: 2em;
       }
 
-      .avatar {
+      .article__avatar {
         grid-column: 2;
         grid-row: 2;
 
@@ -63,16 +64,36 @@ body {
         border-radius: 50%;
       }
 
-      .name {
+      .article__name {
         grid-column: 3;
         grid-row: 2;
         align-content: center;
       }
 
-      .distance {
-        grid-column: 4 / span 2;
+      .article__distance {
+        grid-column: 4 / span 1;
         grid-row: 2;
       }
+
+      .article__like {
+        grid-column: 5 / span 2;
+        grid-row: 2;
+
+        a {
+          text-decoration: none;
+          color: black;
+          height: 100%;
+          padding: auto;
+
+          &:hover {
+            color: #00a69b;
+          }
+        }
+      }
+    }
+
+    .pagination {
+      
     }
 
   }

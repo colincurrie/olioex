@@ -8,9 +8,19 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <!-- I should put this in the pipeline if I geta chance -->
+    <script src="https://kit.fontawesome.com/cb81c48444.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="page">
+      <div class="header">
+        <%= render "layouts/header" %>
+      </div>
+      <div class="main">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
