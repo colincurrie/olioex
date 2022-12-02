@@ -29,6 +29,10 @@ And setting up the database can be done by running the following commands:
     rails db:create
     rails db:migrate
 
+You may also need to install redis to back the action cable support. To install on a Mac please use homebrew:
+
+    brew install redis
+
 ### How to run the test suite
 
 The project has an RSpec test suite which generates a code coverage report in the `spec/coverage` folder. The test suite can be run with the following command:
