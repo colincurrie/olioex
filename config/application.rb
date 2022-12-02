@@ -1,7 +1,7 @@
 require_relative "boot"
 
 # reducing the default routes by breaking down 'rails/all' and removing action mailer and action cable
-#require "rails/all"
+# require "rails/all"
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -10,8 +10,9 @@ require "active_record/railtie"
 require "action_controller/railtie"
 #require "action_mailer/railtie"
 require "action_view/railtie"
+require "action_cable/engine"
 require "sprockets/railtie"
-require "rails/test_unit/railtie"
+#require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -29,5 +30,7 @@ module Olioex
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.action_cable.mount_path = '/websocket'
   end
 end
