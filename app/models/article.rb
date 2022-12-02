@@ -55,7 +55,9 @@ class Article < ApplicationRecord
 
   def update_reaction( data )
     if self.reaction
-      self.reaction.update( data )
+      # don't reload likes as we are persisting these in the database
+      likes = [ reaction.likes, data['likes'] ].max
+      self.reaction.update( data.merge( 'likes' => likes ) )
     else
       self.reaction = Reaction.create( data )
     end

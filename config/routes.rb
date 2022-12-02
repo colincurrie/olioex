@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root "articles#index"
+  root "home#index"
 
-  resources :articles, only: [ :index ]
-  # do
-  #   get '/page/:page', action: :index, on: :collection
-  # end
+  resources :articles, only: [ :index ] do
+    # This is not very RESTful and a fallback while I work on ActionCable
+    get 'like', to: 'articles#like', as: 'like'
+  end
 end

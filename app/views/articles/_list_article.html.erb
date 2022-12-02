@@ -1,8 +1,10 @@
-<div class="article">
+<div class="article" id="article-<%= article.id %>">
   <%= image_tag article.photos.first&.original_url, class: 'article__image' %>
   <div class="article__title"><%= article.title %></div>
   <%= image_tag article.user&.avatar&.small_url, class: 'article__avatar' %>
   <span class="article__name"><%= article.user&.first_name %></span>
   <span class="article__distance"><i class="fa-sharp fa-solid fa-location-pin"></i> <%= article.location&.distance %>mi away</span>
-  <span class="article__like"><a href="#"><i class="fa-solid fa-thumbs-up"></i> <%= pluralise_likes(article.reaction.likes) %></a></span>
+  <span class="article__like">
+    <a href="<%= article_like_url article_id: article.id, page: params[:page] || 1 %>"><i class="fa-solid fa-thumbs-up"></i> <%= pluralise_likes article.reaction.likes %></a>
+  </span>
 </div>

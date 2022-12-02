@@ -15,6 +15,12 @@ class ArticlesController < ApplicationController
     @articles = Article.order(created_at: :desc).page( params[:page] )
   end
 
+  def like
+    @article = Article.find( params[:article_id] )
+    @article.reaction.update( likes: @article.reaction.likes + 1 )
+    redirect_to( articles_url page: params[:page], anchor: "article-#{@article.id}" )
+  end
+
   def pluralise_likes( number )
     case number
       when 0 then 'No likes yet'
